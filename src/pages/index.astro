@@ -1,11 +1,38 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import SectionContainer from '../components/SectionContainer.astro';
+import Hero from '../components/Hero.astro';
+import BriefCase from '../components/icons/BriefCase.astro';
+import CodeIcon from "../components/icons/Code.astro"
+import TitleSection from '../components/TitleSection.astro';
+import ProfileCheck from "../components/icons/ProfileCheck.astro"
 ---
 
 <Layout>
-	<Welcome />
+	<main class="px-4">
+		<SectionContainer class="py-15 md:py-36">
+          <Hero>
+			<slot/>
+		  </Hero>
+		</SectionContainer>
+		<SectionContainer id="experiencia">
+			<TitleSection>
+				<BriefCase class="size-8"/>
+				Experiencia laboral
+			</TitleSection>
+		</SectionContainer>
+		<SectionContainer id="proyectos">
+			<TitleSection>
+				<CodeIcon class="size-7"/>
+                Proyectos
+			</TitleSection>
+		</SectionContainer>
+		<SectionContainer id="sobre-mi">
+	        <TitleSection>
+				<ProfileCheck class="size-8"/>
+				Sobre mi 
+			</TitleSection>
+		</SectionContainer>
+
+	</main>
 </Layout>
