@@ -1,0 +1,115 @@
+---
+import GithHub from "./icons/GithHub.astro";
+import JavaScript from "./icons/JavaScript.astro";
+import Html from "./icons/Html.astro";
+import CSS from "./icons/CSS.astro";
+import React from "./icons/React.astro";
+import Docusaurus from "./icons/Docusaurus.astro";
+import Link from "./icons/Link.astro"
+import LinkButton from "./LinkButton.astro";
+
+
+const TAGS={
+    JAVASCRIPT:{
+        name:"JavaScript",
+        class:"bg-[#B9AB3F] text-white",
+        icon:JavaScript
+    },
+    HTML:{
+        name:"HTML",
+        class:"bg-[#E34F26] text-white",
+        icon:Html
+    },
+    CSS:{
+        name:"CSS",
+        class:"bg-[#264DE4] text-white",
+        icon:CSS
+    },
+    REACT:{
+        name:"React",
+        class:"bg-[#387ef080] text-white",
+        icon:React
+    },
+    DOCUSAURUS:{
+        name:"Docusaurus",
+        class:"bg-[#3A7CA5] text-white",
+        icon:Docusaurus
+    }
+}
+
+const PROJECTS=[
+    {
+      title:"WMS-DOCS",
+      description:"Es un sitio web  de un manual de usuario sobre como utilizar un sistema de WMS, las funcionalidades principales del sitio es busqueda de informacion, desglose de la informacion organizada y  un chatbot para responder dudas y preguntas de los usuarios finales",
+      link:"https://wmsdocs.netlify.app/",
+      github:"https://github.com/MANGO2412/docwms",
+      image:"/projects/wmsdocs.webp",
+      tags:[TAGS.REACT,TAGS.DOCUSAURUS]
+    },
+    {
+      title:"Favorite-links",
+      description:"Es un sitio web  para guardar tus links favoritos, donde puedes gestionar la informacion creando una cuenta y el inicio de sesion",
+      link:"https://links-five-pi.vercel.app/",
+      github:"https://github.com/MANGO2412/links",
+      image:"/projects/favoriteLinks.webp",
+      tags:[TAGS.HTML,TAGS.CSS,TAGS.JAVASCRIPT]
+    },
+    {
+      title:"Conver Number",
+      description:"Es un  convertidor de numeros, donde puedes convertir valores numericos en Decimal, Binario y Hexadecimal ",
+      link:"https://convet-number-5iwars5dx-mango2412.vercel.app/",
+      github:"https://github.com/MANGO2412/convertNumb",
+      image:"/projects/convertNumber.webp",
+      tags:[TAGS.HTML,TAGS.CSS,TAGS.JAVASCRIPT]
+    }
+    
+]
+---
+
+<div class="flex flex-col gap-y-16">
+    {
+        PROJECTS.map(({title,description,link,github,image,tags})=>(
+            <article class="flex flex-col space-y-8 group md:flex-row md:space-x-8 md:space-y-0">
+               <div class="w-full md:w-1/2">
+                   <div class="relative flex flex-col items-center col-span-6 row-span-5 gap-8 transition duration-500 ease-in-out transform shadow-xl overflow-clip rounded-xl sm:rounded-xl md:group-hover:-translate-y-1 md:group-hover:shadow-2xl lg:border lg:border-gray-800 lg:hover:border-gray-700 lg:hover:bg-gray-800/50">
+                           <img alt="imagenes de proyectos" class="object-cover object-top w-full h-56 transition duration-500 sm:h-full md:scale-110 md:group-hover:scale-105" loading="lazy" src={image} />
+                   </div>
+               </div>
+               <div class="w-full md:w-1/2 md:max-w-lg">
+                   <h3 class="text-2xl font-bold text-gray-800 dark:text-gray-100">
+                     {title}
+                   </h3>
+                   <div class="flex flex-wrap mt-2">
+                      <ul class="flex flex-row mb-2 gap-x-2">
+                         {tags.map((tag)=>(
+                            <li>
+                                <span class={`flex gap-x-2 rounded-full text-xs ${tag.class} py-2 px-2`}>
+                                    <tag.icon  class="size-4"/>
+                                    {tag.name}
+                                </span>
+                            </li>
+                         ))}
+                      </ul>
+                      <div class="mt-2 text-gray-700 dark:text-gray-400">
+                        {description}
+                      </div>
+                      <footer class="flex items-end justify-strt mt-4 gap-x-4">
+                        {github && (
+                            <LinkButton href={github}>
+                               <GithHub class="size-6"/>
+                                codigo
+                            </LinkButton>
+                        )}
+                        {link && (
+                            <LinkButton href={link}>
+                               <Link class="size-6"/>
+                               Vista previa
+                            </LinkButton>
+                        )}
+                      </footer>
+                   </div>
+               </div>
+            </article>
+        ))
+    }
+</div>

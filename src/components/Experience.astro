@@ -1,0 +1,28 @@
+---
+import ExperienceItem from "./ExperienceItem.astro";
+const EXPERIENCE=
+ [
+    {
+        date:"Abril 2025",
+        title:"Practicante de IT",
+        company:"G-global",
+        description:"Elabore la documentacion de un manual de usuario sobre el sistema WMS de la empresa ademas de la implementacion de un sitio web con un cms integrado para la informacion estuviera disponible de forma interna para los empleados"
+    }
+    ,{
+        date:"Agosto 2023",
+        title:"Praticante de programacion",
+        company:"C4 Tijuana",
+        description:"Realize practicas laborales en c4 Tijuana desarrollando un sistema de gestion de radios, principalmente en la elaboracion de un api rest como parte del desarrollo backend del sistema"
+    }
+]
+---
+
+<ol class="relative mt-16">
+    {
+        EXPERIENCE.map((experience)=>(
+            <li class="">
+                <ExperienceItem {...experience}/>
+            </li>
+        ))
+    }
+</ol>
