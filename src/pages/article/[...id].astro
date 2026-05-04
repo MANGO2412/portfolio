@@ -1,0 +1,36 @@
+---
+import Layout from "../../layouts/Layout.astro"
+import RenderToHTML from "../../components/RenderToHTML.astro";
+
+
+export const prerender = false;
+const {id}=Astro.params
+
+const SerializeNotionToData=(content:any)=>{
+    const  output:any[]=[]
+    content.map((elem:any)=>{
+        output.push({"type":elem["type"],"content":elem[elem["type"]]})
+    })
+    return output
+}
+
+
+
+
+const token=import.meta.env.SECRET_TOKEN_API_NOTION
+const data=await fetch(`https://api.notion.com/v1/blocks/${id}/children?page_size=100`,{method:"GET",headers:{"Notion-Version":"2025-09-03","Authorization":`Bearer ${token}`}})
+                 .then((response)=>response.json())
+
+const result=SerializeNotionToData(data["results"])
+
+
+---
+
+<Layout title="articulo" description="Esto es un articlo de prueba">
+    <div class="max-w-4xl mx-auto py-15 md:py-36">
+   {result.map(result=>(
+     <RenderToHTML typeElement={result["type"]}  content={result["type"]=="image" ?result["content"] : result["content"]?.rich_text ?? []}  language={result["content"]?.language ?? ""}/>
+   ))}
+</div>
+</Layout>
+

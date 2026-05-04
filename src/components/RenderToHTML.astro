@@ -1,0 +1,56 @@
+---
+interface File {
+    url:string
+    expiry_time:string
+
+}
+interface Text{
+    content:string,
+    link:null | string
+}
+
+interface Caption{
+    type:string
+    text:Text
+    plain_text:string
+    href:string | null
+}
+interface Image{
+    type:string,
+    file:File
+    caption:Caption[]
+}
+interface Props{
+    typeElement:string
+    content:Object[] | Image
+    language?:string
+}
+
+const {typeElement,content,language}=Astro.props
+const data = Array.isArray(content) ? content.map(elem=>"plain_text" in elem? elem.plain_text :"").join(""):content
+---
+<div>
+    
+
+     {typeElement == "heading_1" && (<h1 class="mb-3 text-5xl font-extrabold dark:text-white">{data}</h1>)}
+     
+     {typeElement == "heading_3" && ( <h3 class="mb-5 mt-4 text-3xl font-bold dark:text-white">{data}</h3>)}
+
+     {typeElement == "paragraph" && ( <p class="mb-5 text-gray-300 dark:text-gray-300">{data}</p>)}
+
+     {typeElement == "bulleted_list_item" && ( <ul class="mb-2 space-y-1 text-gray-500 list-disc list-inside dark:text-gray-300"><li>{data}</li></ul>)}
+
+     {typeElement == "quote" && (<blockquote class="p-4 my-4 border-s-4 border-purple-300 bg-purple-50 dark:border-purple-500 dark:bg-purple-800">
+                                  <p class="text-xl italic font-medium leading-relaxed text-gray-900 dark:text-white">{data}</p>
+                                </blockquote>)}
+
+     {typeElement == "code" && (<pre><code  class={`language-${language}`}>{data}</code></pre>)}
+
+     {typeElement == "image" && (
+                       <figure class="max-w-lg mx-auto">
+                         <img class="h-auto max-w-full rounded-lg" src={`${typeof data == "object"?data.file.url :""}`} alt="image description"/>
+                         <figcaption class="mt-2 text-sm text-center text-gray-500 dark:text-gray-400">{typeof data == "object"?data.caption.map(elem=>elem.plain_text).join(""):""}</figcaption>
+                       </figure>
+      )}
+    
+</div>

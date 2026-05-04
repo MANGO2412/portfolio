@@ -1,0 +1,44 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Article from "../components/Article.astro";
+const formDate=(value:string)=>{
+    const current=new Date(value)
+    const currentDayOfMonth=current.getDate()
+    const currentMonth=current.getMonth()
+    const currentYear=current.getFullYear()
+    return currentDayOfMonth+"/"+(currentMonth+1)+"/"+currentYear
+
+}
+
+const token=import.meta.env.SECRET_TOKEN_API_NOTION
+const data= await fetch("https://api.notion.com/v1/data_sources/29e43d44ed6b80219ffb000b158c4550/query",{method:"POST",headers:{"Notion-Version":"2025-09-03","Authorization":`Bearer ${token}`}})
+            .then((response)=>response.json())
+
+const articles=data["results"]
+---
+
+<Layout title="Mi blog persona" description="Es una parte del portafolio donde se presenta  evidencia de lo que he realizado en el desarrollo">
+    <main  class="px-4">
+        <div class="max-w-4xl mx-auto py-15 md:py-36">
+            <!-- grid layout -->
+            <div class="grid  grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {articles.map((article:any)=>(
+                   article["properties"]["Status"]["status"]["name"]=="Published" && (
+                    <Article 
+                      id={article["id"]}
+                      title={article["properties"]["Title"]["title"][0]["plain_text"]}
+                      category={article["properties"]["Tags"]["multi_select"][0]["name"]}
+                      description={article["properties"]["Description"]["rich_text"][0]["plain_text"]}
+                      category_color={article["properties"]["Tags"]["multi_select"][0]["color"]}
+                      image={article["properties"]["Files & media"]["files"][0]["file"]["url"]}
+                      date={formDate(article["properties"]["Created time"]["created_time"])}
+                    />
+                   )
+
+                ))}
+            </div>
+          
+        </div>
+    </main>
+</Layout>
+

@@ -21,6 +21,7 @@ const {title,description}=Astro.props
 		<meta name="viewport" content="width=device-width" />
         <meta name="description" content={description} />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="stylesheet" href="/prism/prism.css">
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 		<ViewTransitions/>
@@ -38,6 +39,7 @@ const {title,description}=Astro.props
 		<slot />
 		<Footer/>
 	</body>
+	<script is:inline src="/prism/prism.js"></script>
 </html>
 
 <style is:global>
