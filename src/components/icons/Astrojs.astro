@@ -1,0 +1,41 @@
+<svg 
+  {...Astro.props}
+  width="24" 
+  height="24" 
+  xmlns="http://www.w3.org/2000/svg" 
+  viewBox="0 0 860 1083"
+>
+
+<defs>
+  <linearGradient id="gradient" x1="230" y1="715" x2="630" y2="900" gradientUnits="userSpaceOnUse">
+    <stop stop-color="#E63B72"/>
+    <stop offset="1" stop-color="#D83CFF"/>
+  </linearGradient>
+</defs>
+
+<!-- parte blanca -->
+<path 
+fill="#FFFFFF"
+d="M0 705L250 40C258 17 280 0 305 0H555C580 0 602 17 610 40L860 705C760 660 670 635 570 634L456 634L430 270C426 255 404 255 400 270L290 634C180 635 85 660 0 705Z"
+/>
+
+<!-- sombrero negro -->
+<path
+fill="#000000"
+d="M0 705C130 650 260 630 430 634C600 630 730 650 860 705C780 760 680 785 575 790C520 792 485 790 430 790C375 790 340 792 285 790C180 785 80 760 0 705Z"
+/>
+
+<!-- centro negro -->
+<path
+fill="#000000"
+d="M290 634L400 270C404 255 426 255 430 270L456 634H290Z"
+/>
+
+
+<!-- parte rosa -->
+<path
+fill="url(#gradient)"
+d="M230 715C260 755 300 775 350 785C390 792 430 792 470 785C530 775 585 750 625 705C630 745 635 810 600 875C570 930 520 970 460 990C470 930 475 875 450 840C430 810 400 795 365 795C310 795 270 770 230 715Z"
+/>
+
+</svg>

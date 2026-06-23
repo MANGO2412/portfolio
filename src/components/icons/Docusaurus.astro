@@ -1,16 +1,126 @@
-    <svg {...Astro.props} width="24" height="24" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
-      <g fill="none">
-        <circle cx="128" cy="128" r="128" fill="#2FAD65" />
-        <path
-          d="M208.6 93.7c1.2 0 2.2 1 2.2 2.2v64.1c0 1.2-1 2.2-2.2 2.2H91.8L50.2 221.6c-.4.7-1.3.9-2 .5-.3-.2-.5-.5-.6-.8l-24-84.5a2.1 2.1 0 0 1 .5-2.1L111.5 47.5c.8-.9 2-.9 2.8-.1l23.8 23.7h70.5z"
-          fill="#FFFFFF"
-        />
-        <path
-          d="M132.5 74.6a2.2 2.2 0 0 1 1.6.6l18.2 17.9h56.3c1.2 0 2.2 1 2.2 2.2v61.9a2.2 2.2 0 0 1-2.2 2.2H94.6l-41.8 58.3a2 2 0 0 1-1.8.9c-.9-.1-1.7-.7-2-1.5L25.8 137a2 2 0 0 1 .4-2L112 49.2a2 2 0 0 1 2.8 0l17.7 17.6z"
-          fill="#3F3F3F"
-        />
-        <path d="M154 122.2c0 14.5-11.7 26.2-26.2 26.2s-26.2-11.7-26.2-26.2 11.7-26.2 26.2-26.2 26.2 11.7 26.2 26.2z" fill="#2FAD65" />
-        <path d="M145.3 122.2a17.4 17.4 0 1 1-34.8 0 17.4 17.4 0 0 1 34.8 0z" fill="#FFFFFF" />
-        <circle cx="128" cy="122.2" r="8.7" fill="#3F3F3F" />
-      </g>
-    </svg>
+<svg 
+  {...Astro.props}
+  width="24"
+  height="24"
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 600 600"
+>
+
+<defs>
+  <linearGradient id="green" x1="100" y1="100" x2="500" y2="500">
+    <stop offset="0" stop-color="#45D35C"/>
+    <stop offset="1" stop-color="#35C850"/>
+  </linearGradient>
+
+  <linearGradient id="yellow" x1="300" y1="300" x2="500" y2="500">
+    <stop offset="0" stop-color="#FFFF4F"/>
+    <stop offset="1" stop-color="#F8F83A"/>
+  </linearGradient>
+</defs>
+
+
+<!-- cuerpo dinosaurio -->
+<path
+fill="url(#green)"
+d="
+M80 480
+C40 430 60 330 80 260
+C90 220 85 170 130 120
+C180 70 260 90 350 85
+H470
+C530 85 560 130 560 190
+V470
+C560 520 520 540 460 540
+H130
+C90 540 55 515 80 480Z"
+/>
+
+
+<!-- dientes / boca -->
+<path
+fill="#FFFFFF"
+d="
+M310 180
+C390 170 470 170 560 165
+V250
+C490 245 400 240 330 240
+C290 240 280 205 310 180Z"
+/>
+
+
+<!-- boca linea -->
+<path
+stroke="#000"
+stroke-width="7"
+fill="none"
+stroke-linecap="round"
+d="
+M335 215
+C355 185 375 245 395 215
+C415 185 435 245 455 215
+C475 185 495 245 515 215"
+/>
+
+
+<!-- ojo -->
+<circle cx="420" cy="130" r="7" fill="#000"/>
+<circle cx="475" cy="130" r="7" fill="#000"/>
+
+
+<!-- ojo cerrado -->
+<path
+stroke="#000"
+stroke-width="10"
+fill="none"
+stroke-linecap="round"
+d="
+M140 170
+C140 120 200 120 200 170"
+/>
+
+
+<!-- hoja amarilla -->
+<path
+fill="url(#yellow)"
+d="
+M320 280
+H560
+V470
+C560 520 520 540 470 540
+H300
+V360
+H320Z"
+/>
+
+
+<!-- texto hoja -->
+<path
+stroke="#000"
+stroke-width="5"
+stroke-linecap="round"
+d="
+M390 335H490
+M350 370H490
+M350 405H490
+M350 440H490
+M350 475H450"
+/>
+
+
+<!-- brazos -->
+<circle cx="375" cy="330" r="30" fill="#42D95B"/>
+<circle cx="380" cy="450" r="55" fill="#42D95B"/>
+<circle cx="535" cy="335" r="25" fill="#42D95B"/>
+
+
+<!-- cola -->
+<path
+fill="url(#green)"
+d="
+M90 400
+C20 410 15 520 100 530
+C150 535 180 510 190 480
+C120 490 85 450 90 400Z"
+/>
+
+</svg>

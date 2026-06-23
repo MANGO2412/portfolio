@@ -7,6 +7,8 @@ import React from "./icons/React.astro";
 import Docusaurus from "./icons/Docusaurus.astro";
 import Link from "./icons/Link.astro"
 import LinkButton from "./LinkButton.astro";
+import Astrojs from "./icons/Astrojs.astro";
+import Python from "./icons/Python.astro"
 
 
 const TAGS={
@@ -34,10 +36,34 @@ const TAGS={
         name:"Docusaurus",
         class:"bg-[#3A7CA5] text-white",
         icon:Docusaurus
+    },
+    ASTRO:{
+        name:"Astro",
+        class:"bg-[#000000] text-white",
+        icon:Astrojs
+    },
+    PYTHON:{
+        name:"Python",
+        class:"bg-[#000000] text-white",
+        icon:Python
     }
 }
 
 const PROJECTS=[
+    {
+      title:"Positron Radionics",
+      description:"Es una aplicacion web de la empresa homoeonic  que brinda servicios extras relacionado a la medicina alternativa como la radionica y la homopatia",
+      link:"https://positronradionics.com/",
+      image:"/projects/positron.webp",
+      tags:[TAGS.HTML,TAGS.CSS,TAGS.JAVASCRIPT,TAGS.PYTHON]
+    },
+     {
+      title:"Homoeonic-Sitio Web Oficial",
+      description:"Es el sitio web oficial de la empresa Homoeonic donde vende sus producto de homeopatia y comunicacion con sus clientes",
+      link:"https://homoeonic.com/en/",
+      image:"/projects/homoeonic.webp",
+      tags:[TAGS.HTML,TAGS.CSS,TAGS.JAVASCRIPT,TAGS.ASTRO]
+    },
     {
       title:"WMS-DOCS",
       description:"Es un sitio web  de un manual de usuario sobre como utilizar un sistema de WMS, las funcionalidades principales del sitio es busqueda de informacion, desglose de la informacion organizada y  un chatbot para responder dudas y preguntas de los usuarios finales",
@@ -72,7 +98,7 @@ const PROJECTS=[
             <article class="flex flex-col space-y-8 group md:flex-row md:space-x-8 md:space-y-0">
                <div class="w-full md:w-1/2">
                    <div class="relative flex flex-col items-center col-span-6 row-span-5 gap-8 transition duration-500 ease-in-out transform shadow-xl overflow-clip rounded-xl sm:rounded-xl md:group-hover:-translate-y-1 md:group-hover:shadow-2xl lg:border lg:border-gray-800 lg:hover:border-gray-700 lg:hover:bg-gray-800/50">
-                           <img alt="imagenes de proyectos" class="object-cover object-top w-full h-56 transition duration-500 sm:h-full md:scale-110 md:group-hover:scale-105" loading="lazy" src={image} />
+                           <img alt="imagenes de proyectos" class="object-contain object-top w-full h-56 transition duration-500 sm:h-full md:scale-110 md:group-hover:scale-100"  src={image} />
                    </div>
                </div>
                <div class="w-full md:w-1/2 md:max-w-lg">
